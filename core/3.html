@@ -1,6 +1,7 @@
+
 <html>
 <head>
-  <title>HINDI 3  @IPLSTARSPORTS</title>
+  <title>INDIA vs AUSTRALIA [HINDI]</title>
   <meta charset="UTF-8">
   <!-- Player -->
   <script type="text/javascript" src="//cdnjs.cloudflare.com/ajax/libs/clappr/0.2.86/clappr.min.js"></script>
@@ -9,17 +10,24 @@
 </head>
 
 <body>
-  <div id="player"><marquee direction="alternative">𝗝𝗢𝗜𝗡 𝗢𝗨𝗥 𝗧𝗘𝗟𝗘𝗚𝗥𝗔𝗠 𝗖𝗛𝗔𝗡𝗡𝗘𝗟 @𝗜𝗣𝗟𝗦𝗧𝗔𝗥𝗦𝗣𝗢𝗥𝗧𝗦</marquee></div>
+  <div id="player"><marquee direction="alternative">𝗝𝗢𝗜𝗡 𝗢𝗨𝗥 𝗧𝗘𝗟𝗘𝗚𝗥𝗔𝗠 𝗖𝗛𝗔𝗡𝗡𝗘𝗟 @arvmobiles></div>
   <script>
     var player = new Clappr.Player({
-      source: "http://64.227.27.2:8080/hls/.m3u8",
+      source: "https://sonydai.akamaized.net/hls/live/2022316/DAI12ME/master.m3u8?hdnea=exp=1606706864~acl=/*~hmac=344735cbf5278dfe6150d3b37ecc86f0f9b8cd37077b284c2ff15cbbbc6064ba",
+      poster: '/img/ind-vs-aus-live.jpg',
+  mute: true,
+  height: 600,
+  width: 1000,
+  watermark: "/img/logo.png",
+  position: 'top-right',
+  watermarkLink: "http://telegram.dog/arvmobiles",
       parentId: "#player",
       plugins: {
         core: [LevelSelector]
       },
       levelSelectorConfig: {
         //Optional : custom labels
-        title: '動画品質',
+        title: 'ARV MOBILES',
         labels: {
           0: 'Very low',
           1: 'Low ',
