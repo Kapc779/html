@@ -1,0 +1,45 @@
+
+<html>
+<head>
+  <title>INDIA vs AUSTRALIA [English]</title>
+  <meta charset="UTF-8">
+  <!-- Player -->
+  <script type="text/javascript" src="//cdnjs.cloudflare.com/ajax/libs/clappr/0.2.86/clappr.min.js"></script>
+  <!-- Video resolution switcher -->
+  <script type="text/javascript" src="//cdn.jsdelivr.net/gh/clappr/clappr-level-selector-plugin@latest/dist/level-selector.min.js"></script>
+</head>
+
+<body>
+  <div id="player"><marquee direction="alternative">𝗝𝗢𝗜𝗡 𝗢𝗨𝗥 𝗧𝗘𝗟𝗘𝗚𝗥𝗔𝗠 𝗖𝗛𝗔𝗡𝗡𝗘𝗟 @arvmobiles></div>
+  <script>
+    var player = new Clappr.Player({
+      source: "https://sonydai.akamaized.net/linear/hls/pb/event/9RUnGSO8Tpq6hoLGEtnAyg/stream/045b51e4-8e9f-41ec-8a02-a52990bb5b5f:SIN/variant/c1b05cd5dc4895aaf486ba61a89efa9e/bandwidth/hdntl=exp=1606720578~acl=%2f*~id=d6fb4d8f-8948-4542-a537-ba27d4c412e7~data=hdntl~hmac=ce017fd2d37dcf4d9acf02913f0369461d8e1c7766b55241536e535c1fbccf98/4571600.m3u8",
+      poster: '/img/ind-vs-aus-live.jpg',
+  mute: true,
+  height: 720,
+  width: 1280,
+  watermark: "https://cdn5.telesco.pe/file/XCIg7f46te-iLGsFM5l13SYI-uLcEec7C2WNHSS2FBA1uCK2YfftFeyUF2TN7siJhEaS6BcPCuu41SLR_95dal6SRpH2Vu_H_KjnjGCdJ8nhXtSgojwSsrwyIsqwhQty2y7yEdl1BUBNvObqD1clTi558XL3W4M6C60xzBnXR8mCQLntiQNonRO7XIstb7ZNjqcP8V4YEgA7SCCsM8uFcTqvzxkYxwdK9Kr4Dk02SetKrALMIuFf_2uJlSk4gdGNwa5bH_OZDzQdbw5xwtIH4uVFH_KOfHJsq_ou3d76-vmayVHJ06azy01o4REmfozpBJKY6QVViCvty2ADm89WWg.jpg",
+  position: 'top-right',
+  watermarkLink: "http://telegram.dog/arvmobiles",
+      parentId: "#player",
+      plugins: {
+        core: [LevelSelector]
+      },
+      levelSelectorConfig: {
+        //Optional : custom labels
+        title: 'ARV MOBILES',
+        labels: {
+          0: 'Very low',
+          1: 'Low ',
+          2: 'Medium ',
+          3: 'HQ',
+          4: 'High',
+          5: 'Very high',
+          6: 'Extremy high',
+          7: 'Highest'
+        },
+      },
+    });
+  </script>
+</body>
+</html>
