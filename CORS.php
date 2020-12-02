@@ -1,1 +1,1 @@
-<?php header("Access-Control-Allow-Origin: "https://techieskeeda.herokuapp.com"); ?>
+<?php header("Access-Control-Allow-Origin: "https://arvmobileslive.herokuapp.com"); ?>
