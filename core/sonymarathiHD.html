@@ -1,0 +1,57 @@
+
+
+<html>
+
+<head>
+    <title>TELEGRAM @arvmobiles https://telegram.me/arvmobiles </title>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <link rel='stylesheet' href='https://cdn.plyr.io/3.6.2/plyr.css'>
+    <link href="https://fonts.googleapis.com/css?family=Poppins" rel="stylesheet" />
+    <script src="https://cdn.plyr.io/3.6.2/plyr.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/hls.js"></script>
+</head>
+<style>
+    html {
+        font-family: Poppins;
+        background: #000;
+        margin: 0;
+        padding: 0;
+    }
+</style>
+
+<body><video controls crossorigin
+        poster="https://arvmobiles.000webhostapp.com/arv.jpg"
+        playsinline>
+        <source type="application/x-mpegURL" src="{{play_url}}">
+    </video></body>
+<script>document.addEventListener('DOMContentLoaded', () => {
+	const source = 'https://sony247channels.akamaized.net/linear/hls/pb/event/-_w3Jbq3QoW-mFCM2YIzxA/stream/e34fc2fe-1be3-47ae-8575-c374da87e3e1:SIN2/variant/4d2a44915bf06ab4775ae3cd4e0f0dd7/bandwidth/hdntl=exp=1607234830~acl=%2f*~id=bbee47a8-b713-4d3a-a647-496a68697ef2~data=hdntl~hmac=38832f14cba1cf9d1ee1c44a098a300f53ae8288679db06c8ed432b71f6cefc6/4677200.m3u8';
+	const video = document.querySelector('video');
+	
+	// For more options see: https://github.com/sampotts/plyr/#options
+	// captions.update is required for captions to work with hls.js
+	const player = new Plyr(video, {captions: {active: true, update: true, language: 'en'}});
+	
+	if (!Hls.isSupported()) {
+		video.src = source;
+	} else {
+		// For more Hls.js options, see https://github.com/dailymotion/hls.js
+		const hls = new Hls();
+		hls.loadSource(source);
+		hls.attachMedia(video);
+		window.hls = hls;
+		
+		// Handle changing captions
+		player.on('languagechange', () => {
+			// Caption support is still flaky. See: https://github.com/sampotts/plyr/issues/994
+			setTimeout(() => hls.subtitleTrack = player.currentTrack, 50);
+		});
+	}
+	
+	// Expose player so it can be used from the console
+	window.player = player;
+});</script>
+
+</html>
