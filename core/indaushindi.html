@@ -1,45 +1,57 @@
 
-<html>
-<head>
-  <title>INDIA vs AUSTRALIA [HINDI]</title>
-  <meta charset="UTF-8">
-  <!-- Player -->
-  <script type="text/javascript" src="//cdnjs.cloudflare.com/ajax/libs/clappr/0.2.86/clappr.min.js"></script>
-  <!-- Video resolution switcher -->
-  <script type="text/javascript" src="//cdn.jsdelivr.net/gh/clappr/clappr-level-selector-plugin@latest/dist/level-selector.min.js"></script>
-</head>
 
-<body>
-  <div id="player"><marquee direction="alternative">𝗝𝗢𝗜𝗡 𝗢𝗨𝗥 𝗧𝗘𝗟𝗘𝗚𝗥𝗔𝗠 𝗖𝗛𝗔𝗡𝗡𝗘𝗟 @arvmobiles ></div>
-  <script>
-    var player = new Clappr.Player({
-      source: "https://pubads.g.doubleclick.net/ssai/event/YdkvVYC9SWOpxSmk6DXUzQ/master.m3u8",
-      poster: '/img/ind-vs-aus-live.jpg',
-  mute: true,
-  height: 720,
-  width: 1280,
-  watermark: "https://arvmobiles.000webhostapp.com/arv.jpg",
-  position: 'top-right',
-  watermarkLink: "http://telegram.dog/arvmobiles",
-      parentId: "#player",
-      plugins: {
-        core: [LevelSelector]
-      },
-      levelSelectorConfig: {
-        //Optional : custom labels
-        title: 'ARV MOBILES',
-        labels: {
-          0: 'Very low',
-          1: 'Low ',
-          2: 'Medium ',
-          3: 'HQ',
-          4: 'High',
-          5: 'Very high',
-          6: 'Extremy high',
-          7: 'Highest'
-        },
-      },
-    });
-  </script>
-</body>
+<html>
+
+<head>
+    <title>TELEGRAM @arvmobiles https://telegram.me/arvmobiles </title>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <link rel='stylesheet' href='https://cdn.plyr.io/3.6.2/plyr.css'>
+    <link href="https://fonts.googleapis.com/css?family=Poppins" rel="stylesheet" />
+    <script src="https://cdn.plyr.io/3.6.2/plyr.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/hls.js"></script>
+</head>
+<style>
+    html {
+        font-family: Poppins;
+        background: #000;
+        margin: 0;
+        padding: 0;
+    }
+</style>
+
+<body><video controls crossorigin
+        poster="https://arvmobiles.000webhostapp.com/arv.jpg"
+        playsinline>
+        <source type="application/x-mpegURL" src="{{play_url}}">
+    </video></body>
+<script>document.addEventListener('DOMContentLoaded', () => {
+	const source = 'https://pubads.g.doubleclick.net/ssai/event/YdkvVYC9SWOpxSmk6DXUzQ/master.m3u8';
+	const video = document.querySelector('video');
+	
+	// For more options see: https://github.com/sampotts/plyr/#options
+	// captions.update is required for captions to work with hls.js
+	const player = new Plyr(video, {captions: {active: true, update: true, language: 'en'}});
+	
+	if (!Hls.isSupported()) {
+		video.src = source;
+	} else {
+		// For more Hls.js options, see https://github.com/dailymotion/hls.js
+		const hls = new Hls();
+		hls.loadSource(source);
+		hls.attachMedia(video);
+		window.hls = hls;
+		
+		// Handle changing captions
+		player.on('languagechange', () => {
+			// Caption support is still flaky. See: https://github.com/sampotts/plyr/issues/994
+			setTimeout(() => hls.subtitleTrack = player.currentTrack, 50);
+		});
+	}
+	
+	// Expose player so it can be used from the console
+	window.player = player;
+});</script>
+
 </html>
