@@ -2,12 +2,12 @@
 <html>
 
 <head>
-    <title>TELEGRAM @arvmobiles</title>
+    <title>Telegram @arvmobiles</title>
     <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
     <meta http-equiv="X-UA-Compatible" content="IE=edge" />
     <link rel='stylesheet' href='https://cdn.plyr.io/3.6.2/plyr.css'>
-    <link href="https://fonts.googleapis.com/css?family=Poppins" rel="stylesheet" />
+    <link href="https://fonts.googleapis.com/css?family=Poppins|Quattrocento+Sans" rel="stylesheet" />
     <script src="https://cdn.plyr.io/3.6.2/plyr.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/hls.js"></script>
 </head>
@@ -18,39 +18,144 @@
         margin: 0;
         padding: 0;
     }
+    .loading {
+        position: fixed;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        background: #000;
+        z-index: 9999;
+    }
+    
+    .loading-text {
+        position: absolute;
+        top: 0;
+        bottom: 0;
+        left: 0;
+        right: 0;
+        margin: auto;
+        text-align: center;
+        width: 100%;
+        height: 100px;
+        line-height: 100px;
+    }
+    
+    .loading-text span {
+        display: inline-block;
+        margin: 0 5px;
+        color: #00b3ff;
+        font-family: 'Quattrocento Sans', sans-serif;
+    }
+    
+    .loading-text span:nth-child(1) {
+        filter: blur(0px);
+        animation: blur-text 1.5s 0s infinite linear alternate;
+    }
+    
+    .loading-text span:nth-child(2) {
+        filter: blur(0px);
+        animation: blur-text 1.5s 0.2s infinite linear alternate;
+    }
+    
+    .loading-text span:nth-child(3) {
+        filter: blur(0px);
+        animation: blur-text 1.5s 0.4s infinite linear alternate;
+    }
+    
+    .loading-text span:nth-child(4) {
+        filter: blur(0px);
+        animation: blur-text 1.5s 0.6s infinite linear alternate;
+    }
+    
+    .loading-text span:nth-child(5) {
+        filter: blur(0px);
+        animation: blur-text 1.5s 0.8s infinite linear alternate;
+    }
+    
+    .loading-text span:nth-child(6) {
+        filter: blur(0px);
+        animation: blur-text 1.5s 1s infinite linear alternate;
+    }
+    
+    .loading-text span:nth-child(7) {
+        filter: blur(0px);
+        animation: blur-text 1.5s 1.2s infinite linear alternate;
+    }
+    
+    @keyframes blur-text {
+        0% {
+            filter: blur(0px);
+        }
+        100% {
+            filter: blur(4px);
+        }
+    }
+
+    .plyr__video-wrapper::before {
+        position: absolute;
+        top: 10px;
+        right: 10px;
+        z-index: 10;
+        content: '';
+        height: 60px;
+        width: 60px;
+        background: url('https://arvmobiles.000webhostapp.com/arv.jpg') no-repeat;
+        background-size: 35px auto, auto;
+    }
+    
 </style>
 
-<body><video controls crossorigin
-        poster="https://arvmobiles.000webhostapp.com/arv.jpg"
-        playsinline>
-        <source type="application/x-mpegURL" src="{{play_url}}">
-    </video></body>
-<script>document.addEventListener('DOMContentLoaded', () => {
-	const source = 'https://pubads.g.doubleclick.net/ssai/event/9o6DQfRmS2evzn5gC2Xdzg/master.m3u8';
-	const video = document.querySelector('video');
-	
-	// For more options see: https://github.com/sampotts/plyr/#options
-	// captions.update is required for captions to work with hls.js
-	const player = new Plyr(video, {captions: {active: true, update: true, language: 'en'}});
-	
-	if (!Hls.isSupported()) {
-		video.src = source;
-	} else {
-		// For more Hls.js options, see https://github.com/dailymotion/hls.js
-		const hls = new Hls();
-		hls.loadSource(source);
-		hls.attachMedia(video);
-		window.hls = hls;
-		
-		// Handle changing captions
-		player.on('languagechange', () => {
-			// Caption support is still flaky. See: https://github.com/sampotts/plyr/issues/994
-			setTimeout(() => hls.subtitleTrack = player.currentTrack, 50);
-		});
-	}
-	
-	// Expose player so it can be used from the console
-	window.player = player;
-});</script>
+<body>
+<div id="loading" class="loading">	
+<div class="loading-text">	
+     <span class="loading-text-words">□</span>	
+    <span class="loading-text-words">■</span>	
+    <span class="loading-text-words">□</span>	
+    <span class="loading-text-words">■</span>	
+    <span class="loading-text-words">□</span>	
+    <span class="loading-text-words">■</span>	
+    <span class="loading-text-words">□</span>
+</div>
+</div>
+<div id="video">
+    <video controls crossorigin poster="https://arvmobiles.000webhostapp.com/arv.jpg" playsinline>
+</div>
+</body>
+<script>
+setTimeout(videovisible, 5000)
+
+function videovisible() {
+    document.getElementById('loading').style.display = 'none'
+}
+
+    document.addEventListener("DOMContentLoaded", () => {
+        const e = document.querySelector("video"),
+            n = atob("aHR0cHM6Ly9wdWJhZHMuZy5kb3VibGVjbGljay5uZXQvc3NhaS9ldmVudC85bzZEUWZSbVMyZXZ6bjVnQzJYZHpnL21hc3Rlci5tM3U4"),
+            o = {};
+        if (Hls.isSupported()) {
+            var config = {
+                maxMaxBufferLength: 100,
+            };
+            const t = new Hls(config);
+            t.loadSource(n), t.on(Hls.Events.MANIFEST_PARSED, function(n, l) {
+                const s = t.levels.map(e => e.height);
+                o.quality = {
+                    default: s[0],
+                    options: s,
+                    forced: !0,
+                    onChange: e => (function(e) {
+                        window.hls.levels.forEach((n, o) => {
+                            n.height === e && (window.hls.currentLevel = o)
+                        })
+                    })(e)
+                };
+                new Plyr(e, o)
+            }), t.attachMedia(e), window.hls = t
+        } else {
+            new Plyr(e, o)
+        }
+    });
+</script>
 
 </html>
