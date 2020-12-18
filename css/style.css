@@ -6,7 +6,7 @@
 }
 
 .fullscreen {
-    background-color: #0004ff;
+    background-color: #000000;
     width: 100%;
     min-height: 100vh;
     color: white;
@@ -14,7 +14,7 @@
 }
 
 nav {
-    background: #0004ff;
+    background: #000000;
     transition: all 0.3s ease-in-out;
 }
 
@@ -55,7 +55,7 @@ nav .container {
 }
 
 .circle {
-    background-color: red;
+    background-color: orange;
     height: 20px;
     width: 20px;
     border-radius: 100px;
