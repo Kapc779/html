@@ -6,7 +6,7 @@
 }
 
 .fullscreen {
-    background-color: #000000;
+    background-color: #333;
     width: 100%;
     min-height: 100vh;
     color: white;
@@ -14,7 +14,7 @@
 }
 
 nav {
-    background: #000000;
+    background: #333;
     transition: all 0.3s ease-in-out;
 }
 
